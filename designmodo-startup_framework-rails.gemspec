@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Vertmac"]
   spec.email         = ["info@vertmac.com"]
   spec.description   = %q{designmodo-startup_framework-rails integrates Flat UI Pro for Rails 3 and 4 Asset Pipelines}
-  spec.summary       = %q{Flat UI Pro for Rails 3 and 4 Asset Pipelines}
+  spec.summary       = %q{Startup Framework for Rails 3 and 4 Asset Pipelines}
   spec.homepage      = "https://github.com/reflection/designmodo-startup_framework-rails"
   spec.license       = "Simplified BSD"
 
@@ -19,8 +19,8 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec. add_runtime_dependency 'less-rails-bootstrap'
-  spec.add_runtime_dependency 'jquery-rails', '~> 2.2', '>= 2.2.1'
-  spec.add_runtime_dependency 'jquery-ui-rails', '~> 4.0', '>= 4.0.3'
+  spec.add_runtime_dependency 'jquery-rails', '>= 2.2.1'
+  spec.add_runtime_dependency 'jquery-ui-rails', '>= 4.0.3'
   spec.post_install_message = "" \
   "**********************************************\n\n" \
   "One *must* run `rails generate startup_framework:install <Startup Framework Directory>`\n" \
