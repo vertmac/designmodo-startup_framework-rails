@@ -1,7 +1,7 @@
 module Designmodo
   module StartupFramework
     module Rails
-      VERSION = "1.1.3.3"
+      VERSION = "1.1.3.4"
     end
   end
 end

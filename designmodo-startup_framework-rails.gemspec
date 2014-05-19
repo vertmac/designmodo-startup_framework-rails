@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["info@vertmac.com"]
   spec.description   = %q{designmodo-startup_framework-rails integrates Flat UI Pro for Rails 3 and 4 Asset Pipelines}
   spec.summary       = %q{Startup Framework for Rails 3 and 4 Asset Pipelines}
-  spec.homepage      = "https://github.com/reflection/designmodo-startup_framework-rails"
+  spec.homepage      = "https://github.com/vertmac/designmodo-startup_framework-rails"
   spec.license       = "Simplified BSD"
 
   spec.files         = Dir["lib/**/*"] + ["LICENSE.txt", "Rakefile", "README.md"]
