@@ -11,8 +11,12 @@ module StartupFramework
       
 
       def copy_assets
-        gem_assets_dir = File.expand_path("../../../../../app/assets", __FILE__)
+        gem_assets_dir = File.expand_path("../../../../../", __FILE__)
         pro_dir = startup_dir
+        
+        
+        FileUtils.mkdir_p File.join(gem_assets_dir,"vendor","assets","frameworks","startup-framework")
+        gem_assets_dir = File.join(gem_assets_dir,"vendor","assets","frameworks","startup-framework")
         
         common_files = "common-files"
 				ui_kit = "ui-kit"
@@ -24,12 +28,8 @@ module StartupFramework
           raise "Invalid Startup Framework directory"
         end
 
-        directory File.join(pro_dir, common_files,"less"),   File.join(gem_assets_dir, "less")
-        directory File.join(pro_dir, common_files,"js"),     File.join(gem_assets_dir, "javascripts")
-        directory File.join(pro_dir, common_files,"img"), 		File.join(gem_assets_dir, "images")
-        directory File.join(pro_dir, common_files,"icons"),  File.join(gem_assets_dir, "images")
-        directory File.join(pro_dir, common_files,"css"),  	File.join(gem_assets_dir, "stylesheets")
-        directory File.join(pro_dir, common_files,"fonts"),  File.join(gem_assets_dir, "fonts")
+				#Copy the common-files folder to the gems asset dir
+        directory File.join(pro_dir, common_files),   File.join(gem_assets_dir, common_files)
         
         #Copy the ui-kit folder to the gems asset dir
         directory File.join(pro_dir, ui_kit),			File.join(gem_assets_dir, ui_kit)
@@ -42,7 +42,13 @@ module StartupFramework
       end
 
       def patch_assets
-        gem_assets_dir = File.expand_path("../../../../../app/assets", __FILE__)
+        gem_assets_dir = File.expand_path("../../../../../vendor/assets/frameworks/startup-framework", __FILE__)
+
+       
+        gsub_file File.join(gem_assets_dir, "common-files/less", "icon-font.less"), /\@\{startup\-fontPath\}/, '/assets/startup-framework/common-files/fonts/'
+        gsub_file File.join(gem_assets_dir, "common-files/less", "helper.less"), /url\("\.\.\/fonts\//, '/assets/startup-framework/common-files/fonts/'
+
+        
       end
       
     end
