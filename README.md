@@ -19,7 +19,7 @@ These are optional and the whole thing works much better if you include these tw
 
 Add this line to your application's Gemfile:
 
-    gem 'designmodo-startup_framework-rails', '~> 1.1.3.7'
+    gem 'designmodo-startup_framework-rails', '~> 1.1.3.8'
 
 And then execute:
 
