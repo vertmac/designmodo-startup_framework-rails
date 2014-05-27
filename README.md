@@ -2,7 +2,7 @@
 
 This gem integrates Designmodo's Startup Framework into the Rails 3 and 4 Asset Pipeline.
 
-You **must** purchase and download a licensed copy to use this gem (none of the assets are packaged per StartupFramwork license).  You may do so by clicking the above image (full disclosure: affiliate link).
+You **must** purchase and download a licensed copy to use this gem (none of the assets are packaged per StartupFramework license).  You may do so by clicking the above image (full disclosure: affiliate link).
 
 The version major and minors should match the Startup Framework version.  Anything after these are gem versions.
 
@@ -19,7 +19,7 @@ These are optional and the whole thing works much better if you include these tw
 
 Add this line to your application's Gemfile:
 
-    gem 'designmodo-startup_framework-rails', '~> 1.1.3.5'
+    gem 'designmodo-startup_framework-rails', '~> 1.1.3.7'
 
 And then execute:
 
@@ -32,12 +32,17 @@ One **must** run this after install *and* after update of designmodo-startup_fra
     $ rails generate startup_framework:install <Startup Framework Directory>
 
 ### Include in your less file
-If you want to integrate the framework page:
+**Dont use the variable @startup-basePath. This is used internally everywhere and shouldn't be overriden**
+If you want to create a less by the name signup.less which pretty much looks like this:
 
-    @startup-basePath: "/startup-framework/";
-
-		@import 'flat-ui';
-		@import 'startup_framework.less';
+		 /*
+		  *
+		  *= require bootstrap_and_overrides.css
+		  *= require_self
+		 */
+		 
+		@import 'flatuipro';
+		@import 'startup_framework';
 
 		/* header */
 		@import '/startup-framework/ui-kit/ui-kit-header/less/header-10.less';
@@ -49,29 +54,9 @@ If you want to integrate the framework page:
 
 		/* footer */
 		@import '/startup-framework/ui-kit/ui-kit-footer/less/footer-11.less';
-		
 
-You also need to include a manifest css files which looks like this
-
-		/*
-		 * This is a manifest file that'll be compiled into application.css, which will include all the files
-		 * listed below.
-		 *
-		 * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
-		 * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
-		 *
-		 * You're free to add application-wide styles to this file and they'll appear at the bottom of the
-		 * compiled file so the styles you add here take precedence over styles defined in any styles
-		 * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
-		 * file per style scope.
-		 *
-		 *
-		 *= require_self
-		 *= require bootstrap_and_overrides.css
-		 *= require signup_less
-		*/
-
-
+The whole file for e.g. signup.less can be referred anywhere else in your views or in the application.css
+In case you use capistrano and use local asset precompile logic, in that case you wouldn't require to checkin your Startup-Framework into CVS/Git or you also dont need to copy them to your production server.
 
 ## Usage
 After running the install generator, all assets should be setup.
@@ -81,11 +66,11 @@ If you haven't bought it already, please buy from designmodo.
 
 
 ## Thanks to
-The idea generated from Forums where questions were raise in regards to startup-framework and rails integration.
+The idea generated from [StackOverFlow](http://stackoverflow.com/questions/23331056/designmodos-startup-framework-kit-with-ruby-on-rails/) where this particular question was raised in regards to startup-framework and rails integration.
 
 
 ##Queries
-In case of queries please contact info@vertmac.com
+In case of queries please contact roney.baneree@vertmac.com
 
 
 ## Contributing
