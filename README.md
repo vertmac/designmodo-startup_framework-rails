@@ -1,4 +1,4 @@
-<a href="http://designmodo.com/shop/?u=1124" rel="nofollow" title="Startup Framework" target="_blank"><img src="http://designmodo.com/img/affiliate/startupbright_728_90.jpg" border="0"  width="728" height="90" alt="Startup Framework" /></a>
+<a href="http://designmodo.com/startup/?u=1124" rel="nofollow" title="Startup Framework" target="_blank"><img src="http://designmodo.com/img/affiliate/startupbright_728_90.jpg" border="0"  width="728" height="90" alt="Startup Framework" /></a>
 
 This gem integrates Designmodo's Startup Framework into the Rails 3 and 4 Asset Pipeline.
 
