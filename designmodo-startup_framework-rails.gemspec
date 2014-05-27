@@ -8,10 +8,10 @@ Gem::Specification.new do |spec|
   spec.version       = Designmodo::StartupFramework::Rails::VERSION
   spec.authors       = ["Vertmac"]
   spec.email         = ["info@vertmac.com"]
-  spec.description   = %q{designmodo-startup_framework-rails integrates Flat UI Pro for Rails 3 and 4 Asset Pipelines}
+  spec.description   = %q{designmodo-startup_framework-rails integrates Startup Framework for Rails 3 and 4 Asset Pipelines}
   spec.summary       = %q{Startup Framework for Rails 3 and 4 Asset Pipelines}
   spec.homepage      = "https://github.com/vertmac/designmodo-startup_framework-rails"
-  spec.license       = "Simplified BSD"
+  spec.license       = "LGPL"
 
   spec.files         = Dir["lib/**/*"] + ["LICENSE.txt", "Rakefile", "README.md"]
   spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
