@@ -34,8 +34,7 @@ One **must** run this after install *and* after update of designmodo-startup_fra
 ### Include in your less file
 If you want to integrate the framework page:
 
-    @startup-basePath: "/assets/startup-framework/";
-		@lato: "Lato";
+    @startup-basePath: "/startup-framework/";
 
 		@import 'flat-ui';
 		@import 'startup_framework.less';

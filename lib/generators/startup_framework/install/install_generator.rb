@@ -21,6 +21,7 @@ module StartupFramework
         @fonts_dir = "fonts/#{@namespace}/#{@common_files}/fonts"
         @images_dir = "images/#{@namespace}/#{@common_files}"
         @icons_dir = "#{@images_dir}/icons"
+        @img_dir = "#{@images_dir}/img"
         @less_dir = "less/#{@namespace}/#{@common_files}/less"
         @css_dir = "stylesheets/#{@namespace}/#{@common_files}/css"
         @js_dir = "javascripts/#{@namespace}/#{@common_files}/js"
@@ -46,6 +47,7 @@ module StartupFramework
         
 				#Copy the icons folder to the images dir
         directory File.join(pro_dir, @common_files,"icons"),   File.join(gem_assets_dir, @icons_dir)
+        directory File.join(pro_dir, @common_files,"img"),   File.join(gem_assets_dir, @img_dir)
         FileUtils.cp File.join(pro_dir, @common_files,"css/images/bx_loader.gif"),   File.join(gem_assets_dir, "images")
         FileUtils.cp File.join(pro_dir, @common_files,"css/images/controls.png"),   File.join(gem_assets_dir, "images")
         
@@ -57,6 +59,16 @@ module StartupFramework
         
         #Copy the ui-kit folder to the gems asset dir
         directory File.join(pro_dir, @ui_kit),			File.join(gem_assets_dir, @target_ui_kit)
+        
+        #Remove all non LESS files from ui-kit folder
+        
+        Dir.glob("#{gem_assets_dir}/#{@target_ui_kit}/**/*.*") do |file|
+          unless file =~ /\.less\Z/
+            puts "Deleting file #{File.basename file}"
+            FileUtils.rm file, force: true
+          end
+        end
+        
 
       end
 
@@ -69,18 +81,24 @@ module StartupFramework
         gem_assets_dir = File.expand_path("../../../../../app/assets/", __FILE__)
 
         #Replace fonts-path
-        gsub_file File.join(gem_assets_dir, @less_dir, "helper.less"), /\.\.\/fonts\//, "@{startup-basePath}/common-files/fonts"
+        gsub_file File.join(gem_assets_dir, @less_dir, "helper.less"), /\.\.\/fonts\//, "@{startup-basePath}common-files/fonts/"
 
         
         # replace all urls with asset urls with the exception of data urls
         Dir.glob("#{gem_assets_dir}/#{@less_dir}/*.less") do |less_file|
-          puts "Replacing contents of #{File.basename less_file}"
-          gsub_file less_file, /url\((.+?)\)/, 'asset-url(\\1)'
+          
+          if less_file =~ /icon-font\.less\Z/
+            gsub_file less_file, /url\((.+?)\)/, 'font-url(\\1)'
+          else
+            gsub_file less_file, /url\((.+?)\)/, 'image-url(\\1)'
+          end
         end
         
         Dir.glob("#{gem_assets_dir}/#{@target_ui_kit}/**/*.less") do |ui_kit_less_file|
-          puts "Replacing contents of #{File.basename ui_kit_less_file}"
-          gsub_file ui_kit_less_file, /url\((.+?)\)/, 'asset-url(\\1)'
+          #replace all files with the exception of price-common.less
+          unless ui_kit_less_file =~ /price-common\.less\Z/
+            gsub_file ui_kit_less_file, /url\((.+?)\)/, 'image-url(\\1)'
+          end
         end
         
 
