@@ -6,6 +6,8 @@ You **must** purchase and download a licensed copy to use this gem (none of the 
 
 The version major and minors should match the Startup Framework version.  Anything after these are gem versions.
 
+[![Gem Version](https://badge.fury.io/rb/designmodo-startup_framework-rails.png)](http://badge.fury.io/rb/designmodo-startup_framework-rails)
+
 ## Installation
 First install and configure dependencies: 
 
@@ -19,7 +21,7 @@ These are optional and the whole thing works much better if you include these tw
 
 Add this line to your application's Gemfile:
 
-    gem 'designmodo-startup_framework-rails', '~> 1.1.3.8'
+    gem 'designmodo-startup_framework-rails', '~> 1.1.3.9'
 
 And then execute:
 
