@@ -83,7 +83,7 @@ The idea generated from [StackOverFlow](http://stackoverflow.com/questions/23331
 
 
 ##Queries
-In case of queries please contact roney.baneree@vertmac.com
+In case of queries please contact roney.b@vertmac.com
 
 
 ## Contributing
