@@ -1,0 +1,165 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Designmodo-startup framework-rails by vertmac</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/main.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  </head>
+  <body>
+
+      <header>
+        <h1>Designmodo-startup framework-rails</h1>
+        <p>A gem to integrate designmodo Startup Framework in Rails</p>
+      </header>
+
+      <div id="banner">
+        <span id="logo"></span>
+
+        <a href="https://github.com/vertmac/designmodo-startup_framework-rails" class="button fork"><strong>View On GitHub</strong></a>
+        <div class="downloads">
+          <span>Downloads:</span>
+          <ul>
+            <li><a href="https://github.com/vertmac/designmodo-startup_framework-rails/zipball/master" class="button">ZIP</a></li>
+            <li><a href="https://github.com/vertmac/designmodo-startup_framework-rails/tarball/master" class="button">TAR</a></li>
+          </ul>
+        </div>
+      </div><!-- end banner -->
+
+    <div class="wrapper">
+      <nav>
+        <ul></ul>
+      </nav>
+      <section>
+        <p><a href="http://designmodo.com/startup/?u=1124" title="Startup Framework" target="_blank"><img src="http://designmodo.com/img/affiliate/startupbright_728_90.jpg" border="0" width="728" height="90" alt="Startup Framework"></a></p>
+
+<p>This gem integrates Designmodo's Startup Framework into the Rails 3 and 4 Asset Pipeline.</p>
+
+<p>You <strong>must</strong> purchase and download a licensed copy to use this gem (none of the assets are packaged per StartupFramework license).  You may do so by clicking the above image (full disclosure: affiliate link).</p>
+
+<p>The version major and minors should match the Startup Framework version.  Anything after these are gem versions.</p>
+
+<p><a href="http://badge.fury.io/rb/designmodo-startup_framework-rails"><img src="https://badge.fury.io/rb/designmodo-startup_framework-rails.png" alt="Gem Version"></a></p>
+
+<h2>
+<a name="installation" class="anchor" href="#installation"><span class="octicon octicon-link"></span></a>Installation</h2>
+
+<p>First install and configure dependencies:</p>
+
+<p><a href="https://github.com/metaskills/less-rails">less-rails</a></p>
+
+<p><a href="https://github.com/joliss/jquery-ui-rails">jquery-ui-rails</a></p>
+
+<p><a href="https://github.com/seyhunak/twitter-bootstrap-rails">twitter-bootstrap-rails</a></p>
+
+<p>Add this line to your application's Gemfile:</p>
+
+<pre><code>gem 'designmodo-startup_framework-rails', '~&gt; 1.1.3.10'
+</code></pre>
+
+<p>And then execute:</p>
+
+<pre><code>$ bundle
+</code></pre>
+
+<h3>
+<a name="install-generator" class="anchor" href="#install-generator"><span class="octicon octicon-link"></span></a>Install Generator</h3>
+
+<p>One <strong>must</strong> run this after install <em>and</em> after update of designmodo-startup_framework-rails gem:</p>
+
+<pre><code>$ rails generate startup_framework:install &lt;Startup Framework Directory&gt;
+</code></pre>
+
+<p>In case you are already using <a href="https://github.com/reflection/designmodo-flatuipro-rails">designmodo-flatuipro-rails</a> please use this option, </p>
+
+<pre><code>$ rails generate startup_framework:install &lt;Startup Framework Directory&gt; --flatuipro false
+</code></pre>
+
+<p>This will not copy over the bundled Flat UI files to the gem assuming that you are using <a href="https://github.com/reflection/designmodo-flatuipro-rails">designmodo-flatuipro-rails</a>.</p>
+
+<h3>
+<a name="generate-demo" class="anchor" href="#generate-demo"><span class="octicon octicon-link"></span></a>Generate Demo</h3>
+
+<p>Before running the demo generator, it is imperative that you run the install generator. Lets say you need to generate the sample-01 of Startup Framework. <strong>Make sure that the sample directory exists.</strong></p>
+
+<pre><code>$ rails generate startup_framework:demo 01
+</code></pre>
+
+<p>This will generate a route and corresponding controller/views etc called <code>'/startup_framework_demo/index01'</code>
+All you need to do is just</p>
+
+<pre><code>$ rails server
+</code></pre>
+
+<p>and navigate to http://localhost/startup_framework_demo/index01. You probably need to change teh image tags in case some images dont come up in the file <code>app/views/startup_framework_demo/index&lt;xx&gt;.html.erb</code> where <code>xx</code> stands for the sample number. </p>
+
+<p>The script is copied as <code>app/assets/javascripts/script&lt;xx&gt;.js</code> and the less file is copied as <code>app/assets/stylesheets&lt;xx&gt;.less</code>. You can use them as templates or modify them as your custom less files.</p>
+
+<h2>
+<a name="usage" class="anchor" href="#usage"><span class="octicon octicon-link"></span></a>Usage</h2>
+
+<p>After running the install generator, all assets should be setup. Here goes a template for the less file in case you are making your own view</p>
+
+<pre><code>/*
+ *
+ *= require bootstrap_and_overrides.css
+ *= require_self
+*/
+
+ @import 'startup_framework';
+
+ /* header */
+ @import '/startup-framework/ui-kit/ui-kit-header/less/header-10.less';
+
+ /* content */
+ @import '/startup-framework/ui-kit/ui-kit-content/less/content-3.less';
+ @import '/startup-framework/ui-kit/ui-kit-content/less/content-20.less';
+
+
+ /* footer */
+ @import '/startup-framework/ui-kit/ui-kit-footer/less/footer-11.less';
+</code></pre>
+
+<h2>
+<a name="thanks" class="anchor" href="#thanks"><span class="octicon octicon-link"></span></a>Thanks</h2>
+
+<p>If you haven't bought it already, please buy from designmodo.</p>
+
+<h2>
+<a name="thanks-to" class="anchor" href="#thanks-to"><span class="octicon octicon-link"></span></a>Thanks to</h2>
+
+<p>The idea generated from <a href="http://stackoverflow.com/questions/23331056/designmodos-startup-framework-kit-with-ruby-on-rails/">StackOverFlow</a> where this particular question was raised in regards to startup-framework and rails integration.</p>
+
+<h2>
+<a name="queries" class="anchor" href="#queries"><span class="octicon octicon-link"></span></a>Queries</h2>
+
+<p>In case of queries please contact <a href="mailto:roney.b@vertmac.com">roney.b@vertmac.com</a></p>
+
+<h2>
+<a name="contributing" class="anchor" href="#contributing"><span class="octicon octicon-link"></span></a>Contributing</h2>
+
+<ol>
+<li>Fork it</li>
+<li>Create your feature branch (<code>git checkout -b my-new-feature</code>)</li>
+<li>Commit your changes (<code>git commit -am 'Add some feature'</code>)</li>
+<li>Push to the branch (<code>git push origin my-new-feature</code>)</li>
+<li>Create new Pull Request</li>
+</ol>
+      </section>
+      <footer>
+        <p>Project maintained by <a href="https://github.com/vertmac">vertmac</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></small></p>
+      </footer>
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
+  </body>
+</html>
